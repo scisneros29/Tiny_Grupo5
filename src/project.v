@@ -1,7 +1,10 @@
+
+
 /*
  * Copyright (c) 2024 Your Name
  * SPDX-License-Identifier: Apache-2.0
  */
+
 
 `default_nettype none
 
@@ -17,11 +20,24 @@ module tt_um_example (
 );
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
-  assign uio_oe  = 0;
+  assign uio_oe[7:1]  = 0;
+  assign uio_oe[0] = 1'0;
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+  wire _unused = &{ena, uio_in[7:1], 1'b0};
+
+
+
+reg_bank uut (
+    .clk      (clk),       // reloj
+    .rst_n    (rst_n),     // reset activo bajo
+    .data_in  (ui_in),   // bus de entrada
+    .we       (uio_in[0]),        // write enable ?????
+    .data_out (uio_oe)   // salida
+);
+
 
 endmodule
+
+
