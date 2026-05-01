@@ -35,7 +35,7 @@ The project consists of a memory bank named “tt_um_BCR” that can store 8 dat
 |Inverter | [inv](https://skywater-pdk.readthedocs.io/en/main/contents/libraries/sky130_fd_sc_hd/cells/inv/README.html) | 1|
 ## 339 total cells (excluding fill and tap cells)
 
-# 2D Preview
+# 2D Preview of the layout
 ![png](https://scisneros29.github.io/Tiny_Grupo5/gds_render.png)
 
 ## How to test
