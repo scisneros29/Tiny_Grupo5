@@ -9,9 +9,8 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-### Documentos del proyecto
-
-| Document | Description | Primary function |
+### Proyect files
+| File | Description | Primary function |
 |-----------|-------------|---------------|
 | **Memory Bank** | Memory bank module | Data storage and read/write logic using enables |
 | **TOP** | Top module of the memory bank | An interface that enables connections to the simulator to conduct GDS tests |
