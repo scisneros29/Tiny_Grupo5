@@ -41,8 +41,29 @@ El proyecto consiste de un banco de memoria nombrado "tt_um_BCR" que permite alm
 
 ## How to test
 
-Explain how to use your project
+El módulo tiene 7 entradas en total:
+Entrada de reloj (clk)
+Entrada de reset (rst_n)
+Entrada de puntero de escritura (addr_w)
+Entrada de puntero de lectura (addr_r)
+Entrada de datos que se desean escribir (data_in)
+Entrada de señal de escritura (we)
+Entrada de señal de lectura (re)
+
+Y 1 salida:
+Salida del dato que se desea leer (data_out)
+
+
+El funcionamiento es el siguiente:
+Consiste en una memoria o registro simple de datos de 8 bits, con tamaño de 8 bits.
+
+Cuando se desea guardar un dato a través de la entrada data_in, se activa la señal de escritura we y se da la dirección donde se desea almacenar con la entrada addr_w.
+
+Cuando se desea observar o leer un dato ya almacenado, se activa la señal de lectura re y se da la dirección del dato que se desea leer con la entrada addr_r.
+
+
+
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+No se utiliza hardware adicional.
