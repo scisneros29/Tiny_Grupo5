@@ -13,12 +13,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 | Documento | Descripción | Uso Principal |
 |-----------|-------------|---------------|
-| **Banco de Memoria** | Módulo del banco de memoria | Almacenamiento de datos y lógica de lectura/escritura mediante enables |
-| **TOP** | Módulo top del banco de memoria | Interfaz que permite las conexiones con el simulador para realizar las pruebas de GDS |
+| **Memory Bank** | Memory bank module | Data storage and read/write logic using enables |
+| **TOP** | Top module of the memory bank | An interface that enables connections to the simulator to conduct GDS tests |
 
-El proyecto consiste de un banco de memoria nombrado "tt_um_BCR" que permite almacenar 8 datos de 8 bits cada uno, estos pueden ser accesados mediante las entradas (enables) "we" y "re", dando una mayor facilidad ya que la lectura y escritura son independientes.
+The project consists of a memory bank named “tt_um_BCR” that can store 8 data bits, each 8 bits in length; these can be accessed via the ‘we’ and “re” enable inputs, which makes the process easier since read and write operations are independent.
 
-# Uso de celdas por categoría
+# Cell usage by category
 
 | Category | Cells | Count |
 |---------------|----------|-------|
@@ -41,29 +41,29 @@ El proyecto consiste de un banco de memoria nombrado "tt_um_BCR" que permite alm
 
 ## How to test
 
-El módulo tiene 7 entradas en total:
-Entrada de reloj (clk)
-Entrada de reset (rst_n)
-Entrada de puntero de escritura (addr_w)
-Entrada de puntero de lectura (addr_r)
-Entrada de datos que se desean escribir (data_in)
-Entrada de señal de escritura (we)
-Entrada de señal de lectura (re)
+The module has a total of 7 inputs:
+Clock input (clk)
+Reset input (rst_n)
+Write pointer input (addr_w)
+Read pointer input (addr_r)
+Data input (data_in)
+Write enable input (we)
+Read enable input (re)
 
-Y 1 salida:
-Salida del dato que se desea leer (data_out)
+And 1 output:
+Output of the data to be read (data_out)
 
 
-El funcionamiento es el siguiente:
-Consiste en una memoria o registro simple de datos de 8 bits, con tamaño de 8 bits.
+It works as follows:
+It consists of a simple 8-bit data register with a capacity of 8 bits.
 
-Cuando se desea guardar un dato a través de la entrada data_in, se activa la señal de escritura we y se da la dirección donde se desea almacenar con la entrada addr_w.
+When you want to store data via the data_in input, the write signal (we) is activated, and the address where the data is to be stored is provided via the addr_w input.
 
-Cuando se desea observar o leer un dato ya almacenado, se activa la señal de lectura re y se da la dirección del dato que se desea leer con la entrada addr_r.
+When you want to view or read data that has already been stored, the read signal (re) is activated, and the address of the data to be read is provided via the addr_r input.
 
 
 
 
 ## External hardware
 
-No se utiliza hardware adicional.
+No external hardware was needed.
