@@ -8,7 +8,7 @@
 
 `default_nettype none
 
-module tt_um_example (
+module tt_um_BCR (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -21,20 +21,23 @@ module tt_um_example (
 
   // All output pins must be assigned. If not used, assign to 0.
   assign uio_out = 0;
-  assign uio_oe[7:1]  = 0;
-  assign uio_oe[0] = 1'0;
+  assign uio_oe[7:0] = 0;
+  
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, uio_in[7:1], 1'b0};
+  wire _unused = &{ena, 1'b0};
 
 
 
-reg_bank uut (
-    .clk      (clk),       // reloj
-    .rst_n    (rst_n),     // reset activo bajo
-    .data_in  (ui_in),   // bus de entrada
-    .we       (uio_in[0]),        // write enable ?????
-    .data_out (uio_oe)   // salida
+reg_bank g5_regbank (
+    .clk      (clk),
+    .rst_n    (rst_n),
+    .addr_w   (uio_in[0:2]),
+    .addr_r   (uio_in[3:5]),
+    .data_in  (ui_in),
+    .we       (uio_in[6]),
+    .re       (uio_in[7]),
+    .data_out (uo_out)
 );
 
 
