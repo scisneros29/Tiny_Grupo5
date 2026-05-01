@@ -13,8 +13,8 @@ You can also include images in this folder and reference them in the markdown. E
 
 | Documento | Descripción | Uso Principal |
 |-----------|-------------|---------------|
-| **[ Banco de Memoria]** | Módulo del banco de memoria | Almacenamiento de datos y lógica de lectura/escritura mediante enables |
-| **[ TOP]** | Módulo top del banco de memoria | Interfaz que permite las conexiones con el simulador para realizar las pruebas de GDS |
+| **Banco de Memoria** | Módulo del banco de memoria | Almacenamiento de datos y lógica de lectura/escritura mediante enables |
+| **TOP** | Módulo top del banco de memoria | Interfaz que permite las conexiones con el simulador para realizar las pruebas de GDS |
 
 El proyecto consiste de un banco de memoria nombrado "tt_um_BCR" que permite almacenar 8 datos de 8 bits cada uno, estos pueden ser accesados mediante las entradas (enables) "we" y "re", dando una mayor facilidad ya que la lectura y escritura son independientes.
 
