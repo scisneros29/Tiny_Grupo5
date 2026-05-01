@@ -2,37 +2,37 @@
 `timescale 1ns/1ps
 
 module reg_bank (
-    input clk,
-    input rst_n,
-    input [7:0] data_in,     // bus de entrada
-    input we,                // write enable
-    output reg [7:0] data_out
+    input  wire       clk,
+    input  wire       rst_n,
+    input  wire [2:0] addr_w,     // dirección de escritura
+    input  wire [2:0] addr_r,     // dirección de lectura
+    input  wire [7:0] data_in,    // bus de entrada
+    input  wire       we,         // write enable
+    input  wire       re,         // read enable
+    output reg  [7:0] data_out
 );
 
-    reg [7:0] mem [7:0];     // 8 registros de 8 bits
-    reg [2:0] wr_ptr;        // puntero interno de escritura
+    reg [7:0] mem [7:0];          // 8 registros de 8 bits
 
     integer i;
 
+    // Escritura síncrona y reset de memoria
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            // reset: limpiar registros y reiniciar dirección automática
             for (i = 0; i < 8; i = i + 1) begin
                 mem[i] <= 8'b0;
             end
-
-            wr_ptr   <= 3'b000;
-            data_out <= 8'b0;
-
         end else if (we) begin
-            // escritura automática en la posición actual
-            mem[wr_ptr] <= data_in;
+            mem[addr_w] <= data_in;
+        end
+    end
 
-            // mostrar el último dato almacenado
-            data_out <= data_in;
-
-            // avanzar automáticamente a la siguiente posición
-            wr_ptr <= wr_ptr + 1'b1;
+    // Lectura síncrona
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            data_out <= 8'b0;
+        end else if (re) begin
+            data_out <= mem[addr_r];
         end
     end
 
