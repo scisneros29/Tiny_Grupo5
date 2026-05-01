@@ -32,8 +32,8 @@ module tt_um_BCR (
 reg_bank g5_regbank (
     .clk      (clk),
     .rst_n    (rst_n),
-    .addr_w   (uio_in[0:2]),
-    .addr_r   (uio_in[3:5]),
+    .addr_w   (uio_in[2:0]),
+    .addr_r   (uio_in[5:3]),
     .data_in  (ui_in),
     .we       (uio_in[6]),
     .re       (uio_in[7]),
